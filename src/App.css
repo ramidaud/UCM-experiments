@@ -1,0 +1,143 @@
+/* ── Layout ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.grad-map-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.grad-map-sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #002664;
+  margin: 0;
+  padding: 16px 16px 4px;
+}
+
+.sidebar-subtitle {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 8px;
+  padding: 0 16px;
+}
+
+.location-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Location cards ──────────────────────────────────────── */
+.location-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+}
+
+.location-card:hover {
+  border-color: #c8a84b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.location-card--active {
+  border-color: #002664;
+  background: #eef2f9;
+}
+
+.location-card:focus-visible {
+  outline: 3px solid #c8a84b;
+  outline-offset: 2px;
+}
+
+.card-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 10px 12px;
+}
+
+.card-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #002664;
+  margin: 0 0 4px;
+}
+
+.card-description {
+  font-size: 0.78rem;
+  color: #444;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-tip {
+  font-size: 0.78rem;
+  color: #555;
+  margin: 8px 0 0;
+  background: #fff8e1;
+  border-left: 3px solid #c8a84b;
+  padding: 6px 8px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.4;
+}
+
+/* ── Map ─────────────────────────────────────────────────── */
+.grad-map-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Mobile: stack sidebar above map ─────────────────────── */
+@media (max-width: 700px) {
+  .grad-map-wrapper {
+    flex-direction: column;
+  }
+
+  .grad-map-sidebar {
+    width: 100%;
+    height: 45vh;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .grad-map-container {
+    height: 55vh;
+  }
+}
